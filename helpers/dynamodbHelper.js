@@ -13,7 +13,8 @@ const getProveedorById = async function () {
     
       await docClient.send(new GetItemCommand(params))
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    throw error;
   }
 };
 

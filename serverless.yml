@@ -86,6 +86,8 @@ resources:
         AttributeDefinitions:
           - AttributeName: servicios_id
             AttributeType: S
+          - AttributeName: proveedor_id
+            AttributeType: S
         KeySchema:
           - AttributeName: servicios_id
             KeyType: HASH

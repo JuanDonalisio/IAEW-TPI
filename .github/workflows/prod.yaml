@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 14
+        node-version: 18
 
     - name: Serverless install
       run: npm i -g serverless@3.36.0

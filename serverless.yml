@@ -12,8 +12,6 @@ plugins:
   - serverless-offline
   - serverless-dynamodb-local
 
-
-
 functions:
   getProveedores:
     handler: handler.getProveedores
@@ -45,20 +43,26 @@ resources:
     Proveedores:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: MyTableName
+        TableName: Proveedores
         AttributeDefinitions:
           - AttributeName: proveedor_id
             AttributeType: S
         KeySchema:
           - AttributeName: proveedor_id
             KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
     Servicios:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: MyTableName
+        TableName: Servicios
         AttributeDefinitions:
-          - AttributeName: proveedor_id
+          - AttributeName: servicios_id
             AttributeType: S
         KeySchema:
-          - AttributeName: proveedor_id
+          - AttributeName: servicios_id
             KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "aws-sdk": "^2.1488.0",
     "serverless": "^3.36.0"
   },
   "name": "iaew-tpi",

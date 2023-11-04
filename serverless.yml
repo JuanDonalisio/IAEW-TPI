@@ -13,29 +13,54 @@ plugins:
   - serverless-dynamodb-local
 
 functions:
-  getProveedores:
-    handler: handler.getProveedores
+  getProveedor:
+    handler: src/getProveedor.handler
     events:
-      - httpApi:
+      - http:
           path: /proveedores
           method: get
   createProveedor:
-    handler: handler.createProveedor
+    handler: src/createProveedor.handler
     events:
-      - httpApi:
+      - http:
           path: /proveedores
           method: post
   updateProveedor:
-    handler: handler.updateProveedor
+    handler: src/updateProveedor.handler
     events:
-      - httpApi:
-          path: /proveedores
+      - http:
+          path: /proveedores/{proveedor_id}
           method: put
   deleteProveedor:
-    handler: handler.deleteProveedor
+    handler: src/deleteProveedor.handler
     events:
-      - httpApi:
-          path: /proveedores
+      - http:
+          path: /proveedores/{proveedor_id}
+          method: delete
+  
+  getServicio:
+    handler: src/getServicio.handler
+    events:
+      - http:
+          path: /proveedores/{provedor_id}/servicios
+          method: get
+  createServicio:
+    handler: src/createServicio.handler
+    events:
+      - http:
+          path: /proveedores/{provedor_id}/servicios
+          method: post
+  updateServicio:
+    handler: src/updateServicio.handler
+    events:
+      - http:
+          path: /proveedores/{provedor_id}/servicios/{servicio_id}
+          method: put
+  deleteServicio:
+    handler: src/deleteServicio.handler
+    events:
+      - http:
+          path: /proveedores/{provedor_id}/servicios/{servicio_id}
           method: delete
 
 resources:

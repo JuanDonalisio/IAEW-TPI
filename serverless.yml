@@ -1,0 +1,64 @@
+service: iaew-tpi
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x 
+  stage: dev
+  region: us-east-1
+
+plugins:
+  - serverless-offline
+  - serverless-dynamodb-local
+
+
+
+functions:
+  getProveedores:
+    handler: handler.getProveedores
+    events:
+      - httpApi:
+          path: /proveedores
+          method: get
+  createProveedor:
+    handler: handler.createProveedor
+    events:
+      - httpApi:
+          path: /proveedores
+          method: post
+  updateProveedor:
+    handler: handler.updateProveedor
+    events:
+      - httpApi:
+          path: /proveedores
+          method: put
+  deleteProveedor:
+    handler: handler.deleteProveedor
+    events:
+      - httpApi:
+          path: /proveedores
+          method: delete
+
+resources:
+  Resources:
+    Proveedores:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: MyTableName
+        AttributeDefinitions:
+          - AttributeName: proveedor_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: proveedor_id
+            KeyType: HASH
+    Servicios:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: MyTableName
+        AttributeDefinitions:
+          - AttributeName: proveedor_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: proveedor_id
+            KeyType: HASH

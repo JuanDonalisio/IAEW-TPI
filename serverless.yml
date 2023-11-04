@@ -7,6 +7,7 @@ provider:
   runtime: nodejs18.x 
   stage: dev
   region: us-east-1
+  environment: ${file(environments/environment_${self:custom.currentStage}_ssm.yaml)}
 
 plugins:
   - serverless-offline
@@ -91,3 +92,6 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
+
+custom:
+  currentStage: ${opt:stage, self:provider.stage}

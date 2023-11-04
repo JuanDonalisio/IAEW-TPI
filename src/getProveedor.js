@@ -1,6 +1,8 @@
 'use strict';
+const { getProveedorById } = require('../helpers/dynamodbHelper');
 
 module.exports.handler = async (event) => {
+  await getProveedorById();
   return {
     statusCode: 200,
     body: JSON.stringify(

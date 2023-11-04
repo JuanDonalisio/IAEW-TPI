@@ -1,5 +1,5 @@
-DYNAMODB_PROVEEDORES_TABLE: Proveedores
+DYNAMODB_PROVEEDORES_TABLE: 'Proveedores'
 
 DYNAMODB_SERVICIOS_TABLE: Servicioss
 
-FILE_CONFIG: 
+FILE_CONFIG: '../environments/config_${self:custom.currentStage}.js'

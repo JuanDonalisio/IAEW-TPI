@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.441.0",
     "serverless": "^3.36.0"
   },
   "name": "iaew-tpi",

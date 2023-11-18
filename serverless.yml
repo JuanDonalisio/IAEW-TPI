@@ -7,35 +7,61 @@ provider:
   runtime: nodejs18.x 
   stage: dev
   region: us-east-1
+  environment: ${file(environments/environment_${self:custom.currentStage}_ssm.yaml)}
 
 plugins:
   - serverless-offline
   - serverless-dynamodb-local
 
 functions:
-  getProveedores:
-    handler: handler.getProveedores
+  getProveedor:
+    handler: src/getProveedor.handler
     events:
-      - httpApi:
-          path: /proveedores
+      - http:
+          path: /proveedores/{proveedor_id?}
           method: get
   createProveedor:
-    handler: handler.createProveedor
+    handler: src/createProveedor.handler
     events:
-      - httpApi:
+      - http:
           path: /proveedores
           method: post
   updateProveedor:
-    handler: handler.updateProveedor
+    handler: src/updateProveedor.handler
     events:
-      - httpApi:
-          path: /proveedores
+      - http:
+          path: /proveedores/{proveedor_id}
           method: put
   deleteProveedor:
-    handler: handler.deleteProveedor
+    handler: src/deleteProveedor.handler
     events:
-      - httpApi:
-          path: /proveedores
+      - http:
+          path: /proveedores/{proveedor_id}
+          method: delete
+  
+  getServicio:
+    handler: src/getServicio.handler
+    events:
+      - http:
+          path: /proveedores/{provedor_id}/servicios
+          method: get
+  createServicio:
+    handler: src/createServicio.handler
+    events:
+      - http:
+          path: /proveedores/{provedor_id}/servicios
+          method: post
+  updateServicio:
+    handler: src/updateServicio.handler
+    events:
+      - http:
+          path: /proveedores/{provedor_id}/servicios/{servicio_id}
+          method: put
+  deleteServicio:
+    handler: src/deleteServicio.handler
+    events:
+      - http:
+          path: /proveedores/{provedor_id}/servicios/{servicio_id}
           method: delete
 
 resources:
@@ -60,9 +86,14 @@ resources:
         AttributeDefinitions:
           - AttributeName: servicios_id
             AttributeType: S
+          - AttributeName: proveedor_id
+            AttributeType: S
         KeySchema:
           - AttributeName: servicios_id
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
+
+custom:
+  currentStage: ${opt:stage, self:provider.stage}

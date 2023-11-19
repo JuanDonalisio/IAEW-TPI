@@ -18,7 +18,7 @@ functions:
     handler: src/getProveedor.handler
     events:
       - http:
-          path: /proveedores/{proveedor_ida?}
+          path: /proveedores/{proveedor_id?}
           method: get
   createProveedor:
     handler: src/createProveedor.handler
@@ -30,38 +30,38 @@ functions:
     handler: src/updateProveedor.handler
     events:
       - http:
-          path: /proveedores/{proveedor_idb}
+          path: /proveedores/{proveedor_id}
           method: put
   deleteProveedor:
     handler: src/deleteProveedor.handler
     events:
       - http:
-          path: /proveedores/{proveedor_idc}
+          path: /proveedores/{proveedor_id}
           method: delete
   
   getServicio:
     handler: src/getServicio.handler
     events:
       - http:
-          path: /proveedores/{provedor_idd}/servicios
+          path: /proveedores/{provedor_id}/servicios
           method: get
   createServicio:
     handler: src/createServicio.handler
     events:
       - http:
-          path: /proveedores/{provedor_ide}/servicios
+          path: /proveedores/{provedor_id}/servicios
           method: post
   updateServicio:
     handler: src/updateServicio.handler
     events:
       - http:
-          path: /proveedores/{provedor_idf}/servicios/{servicio_ida}
+          path: /proveedores/{provedor_id}/servicios/:servicio_id
           method: put
   deleteServicio:
     handler: src/deleteServicio.handler
     events:
       - http:
-          path: /proveedores/{provedor_idg}/servicios/{servicio_idb}
+          path: /proveedores/{provedor_id}/servicios/:servicio_id
           method: delete
 
 resources:

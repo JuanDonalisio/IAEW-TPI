@@ -21,38 +21,5 @@ functions:
           path: /proveedores/{proveedorId?}
           method: get
 
-resources:
-  Resources:
-    Proveedores:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: Proveedores
-        AttributeDefinitions:
-          - AttributeName: proveedor_id
-            AttributeType: S
-        KeySchema:
-          - AttributeName: proveedor_id
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
-    Servicios:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: Servicios
-        AttributeDefinitions:
-          - AttributeName: servicios_id
-            AttributeType: S
-          - AttributeName: proveedor_id
-            AttributeType: S
-        KeySchema:
-          - AttributeName: servicios_id
-            KeyType: HASH
-          - AttributeName: proveedor_id
-            KeyType: RANGE
-        ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
-
 custom:
   currentStage: ${opt:stage, self:provider.stage}

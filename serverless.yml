@@ -20,6 +20,50 @@ functions:
       - http:
           path: /proveedores/{proveedorId}
           method: get
+   createProveedor:
+    handler: src/createProveedor.handler
+    events:
+      - http:
+          path: /proveedores
+          method: post
+  updateProveedor:
+    handler: src/updateProveedor.handler
+    events:
+      - http:
+          path: /proveedores/{proveedorId}
+          method: put
+  deleteProveedor:
+    handler: src/deleteProveedor.handler
+    events:
+      - http:
+          path: /proveedores/{proveedorId}
+          method: delete
+  
+  getServicio:
+    handler: src/getServicio.handler
+    events:
+      - http:
+          path: /proveedores/{proveedorId}/servicios
+          method: get
+  createServicio:
+    handler: src/createServicio.handler
+    events:
+      - http:
+          path: /proveedores/{proveedorId}/servicios
+          method: post
+  updateServicio:
+    handler: src/updateServicio.handler
+    events:
+      - http:
+          path: /proveedores/{proveedorId}/servicios/{servicioId}
+          method: put
+  deleteServicio:
+    handler: src/deleteServicio.handler
+    events:
+      - http:
+          path: /proveedores/{proveedorId}/servicios/{servicioId}
+          method: delete
+
 
 custom:
   currentStage: ${opt:stage, self:provider.stage}

@@ -18,51 +18,8 @@ functions:
     handler: src/getProveedor.handler
     events:
       - http:
-          path: /proveedores/{proveedor_id?}
+          path: /proveedores/{proveedorId?}
           method: get
-  createProveedor:
-    handler: src/createProveedor.handler
-    events:
-      - http:
-          path: /proveedores
-          method: post
-  updateProveedor:
-    handler: src/updateProveedor.handler
-    events:
-      - http:
-          path: /proveedores/{proveedor_id}
-          method: put
-  deleteProveedor:
-    handler: src/deleteProveedor.handler
-    events:
-      - http:
-          path: /proveedores/{proveedor_id}
-          method: delete
-  
-  getServicio:
-    handler: src/getServicio.handler
-    events:
-      - http:
-          path: /proveedores/{provedor_id}/servicios
-          method: get
-  createServicio:
-    handler: src/createServicio.handler
-    events:
-      - http:
-          path: /proveedores/{provedor_id}/servicios
-          method: post
-  updateServicio:
-    handler: src/updateServicio.handler
-    events:
-      - http:
-          path: /proveedores/{provedor_id}/servicios/:servicio_id
-          method: put
-  deleteServicio:
-    handler: src/deleteServicio.handler
-    events:
-      - http:
-          path: /proveedores/{provedor_id}/servicios/:servicio_id
-          method: delete
 
 resources:
   Resources:

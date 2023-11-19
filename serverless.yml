@@ -18,7 +18,7 @@ functions:
     handler: src/getProveedor.handler
     events:
       - http:
-          path: /proveedores/{proveedorId?}
+          path: /proveedores/{proveedorId}
           method: get
 
 custom:

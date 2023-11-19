@@ -20,7 +20,7 @@ functions:
       - http:
           path: /proveedores/{proveedorId}
           method: get
-   createProveedor:
+  createProveedor:
     handler: src/createProveedor.handler
     events:
       - http:
